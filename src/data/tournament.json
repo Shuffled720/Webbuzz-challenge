@@ -1,0 +1,28 @@
+{
+    "tournamentdata":[
+        {
+            "title": "Test Match",
+            "image": "/Images/test.jpg",
+            "fee": 100,
+            "link": "http://example.com/tournament1"
+        },
+        {
+            "title": "One day Match",
+            "image": "/Images/OD.jpg",
+            "fee": 150,
+            "link": "http://example.com/tournament2"
+        },
+        {
+            "title": "T20 Match",
+            "image": "/Images/T20.jpg",
+            "fee": 150,
+            "link": "http://example.com/tournament2"
+        },
+        {
+            "title": "T10 Match",
+            "image": "/Images/T10_Final.jpg",
+            "fee": 150,
+            "link": "http://example.com/tournament2"
+        }
+    ]
+}
