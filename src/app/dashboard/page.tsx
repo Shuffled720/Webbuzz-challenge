@@ -29,7 +29,7 @@ export default function Home() {
                 <nav className="backdrop-blur-sm rounded-b-lg grid grid-cols-2 justify-items-center">
 
                     <div className="">
-                        <Image width={100} height={100} src="/images/logo.png" alt="PULSE" />
+                        <Image width={100} height={100} src="/Images/logo.png" alt="PULSE" />
                     </div>
                     <div className="grid gird-cols-2  flex items-center">
                         <Link href="/registration">
