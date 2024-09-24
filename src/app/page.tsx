@@ -21,10 +21,10 @@ export default function Home() {
           </div>
           <div className="grid gird-cols-2  flex items-center">
             <Link href="/registration">
-              <Button variant="outline">Registration</Button>
+              <Button >Registration</Button>
             </Link>
             <Link href="/login">
-              <Button className="w-full" variant="outline">Login</Button>
+              <Button className="w-full" >Login</Button>
             </Link>
           </div>
           <div>

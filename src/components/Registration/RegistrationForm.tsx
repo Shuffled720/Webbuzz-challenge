@@ -1,106 +1,90 @@
 "use client";
-// app/components/RegistrationForm.tsx
-import React, { useState } from 'react';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
+import { Label } from "@/components/ui/label"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
 import { useForm, SubmitHandler } from 'react-hook-form';
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
+import { useRouter } from 'next/navigation'; // Import useRouter for redirection
 
-// Validation schemas for each step
-const stepOneSchema = yup.object().shape({
-    firstName: yup.string().required('First name is required'),
-    lastName: yup.string().required('Last name is required'),
-});
 
-const stepTwoSchema = yup.object().shape({
-    email: yup.string().email('Invalid email').required('Email is required'),
-    password: yup.string().min(6, 'Password must be at least 6 characters').required('Password is required'),
-});
 
-// Define the data type
+
 type FormData = {
-    firstName: string;
-    lastName: string;
-    age: number;
+    fullName: string;
     email: string;
-    phone: string;
-    address: string;
+    password: string;
+    confirmPassword: string;
 
-    //professional info
-    format: string;
-    experience: "beginner" | "intermediate" | "expert";
-    role: "batsman" | "bowler" | "allrounder" | "wicketkeeper-batsman";
-    battingStyle: "left-hand" | "right-hand";
-    battingOrder: "opening" | "middle" | "tailender";
-    bowlingStyle: "pace" | "spin";
-    bowlingHand: "left-arm" | "right-arm";
+
 };
+const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const data = new FormData(e.currentTarget)
+    const payload = {
+        name: data.get('full-name'),
+        email: data.get('email'),
+        password: data.get('password'),
+        confirmPassword: data.get('confirm-password')
+    }
+
+}
 
 const RegistrationForm = () => {
-    const [step, setStep] = useState(1);
+    const { register, handleSubmit, formState, reset } = useForm<FormData>({});
+    const router = useRouter(); // Initialize the useRouter hook
 
-    const { register, handleSubmit, formState: { errors }, trigger } = useForm<FormData>({
-        resolver: yupResolver(step === 1 ? stepOneSchema : stepTwoSchema),
-    });
 
     const onSubmit: SubmitHandler<FormData> = async (data) => {
-        if (step === 2) {
-            try {
-                const response = await axios.post('/api/register', data); // Changed API route
-                alert('Registration successful!');
-                console.log(response.data);
-            } catch (error) {
-                alert('Error occurred while registering!' + error);
-            }
-        } else {
-            setStep(step + 1);
+
+        if (data.password !== data.confirmPassword) {
+            alert('Passwords do not match!');
+            return;
         }
-    };
+        try {
+            const response = await axios.post('/api/userregister', data); // Changed API route
+            alert('Registration successful!');
+            console.log(response.data);
+        } catch (error) {
+            alert('Error occurred while registering!' + error);
+        }
+        reset();
+        router.push('/');
 
-    const handleNextStep = async () => {
-        const result = await trigger();
-        if (result) setStep(step + 1);
-    };
 
+    };
     return (
-        <div className="form-container">
-            <h1>Multi-Step Registration Form</h1>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                {step === 1 && (
-                    <div>
-                        <div className="form-group">
-                            <label>First Name</label>
-                            <input type="text" {...register('firstName')} />
-                            {errors.firstName && <p className="error-message">{errors.firstName.message}</p>}
-                        </div>
-                        <div className="form-group">
-                            <label>Last Name</label>
-                            <input type="text" {...register('lastName')} />
-                            {errors.lastName && <p className="error-message">{errors.lastName.message}</p>}
-                        </div>
-                    </div>
-                )}
+        <>
+            <form onSubmit={handleSubmit(onSubmit)} className="h-screen flex">
 
-                {step === 2 && (
-                    <div>
-                        <div className="form-group">
-                            <label>Email</label>
-                            <input type="email" {...register('email')} />
-                            {errors.email && <p className="error-message">{errors.email.message}</p>}
+                <Card className="m-auto max-w-sm">
+                    <CardHeader>
+                        <CardTitle className="text-3xl">Register</CardTitle>
+                        <CardDescription>Enter your information to create an account</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <div className="space-y-2">
+                            <Label htmlFor="full-name">Full name</Label>
+                            <Input id="full-name" placeholder="John Doe" required {...register("fullName")} />
                         </div>
-                        <div className="form-group">
-                            <label>Password</label>
-                            <input type="password" {...register('password')} />
-                            {errors.password && <p className="error-message">{errors.password.message}</p>}
+                        <div className="space-y-2">
+                            <Label htmlFor="email">Email</Label>
+                            <Input id="email" type="email" placeholder="me@example.com" required {...register("email")} />
                         </div>
-                    </div>
-                )}
-
-                {step < 2 && <button type="button" onClick={handleNextStep} className="btn">Next</button>}
-                {step === 2 && <button type="submit" className="btn">Submit</button>}
+                        <div className="space-y-2">
+                            <Label htmlFor="password">Password</Label>
+                            <Input id="password" type="password" required {...register("password")} />
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="confirm-password">Confirm Password</Label>
+                            <Input id="confirm-password" type="password" required {...register("confirmPassword")} />
+                        </div>
+                        <Button className="w-full">Register</Button>
+                    </CardContent>
+                </Card>
             </form>
-        </div>
-    );
-};
+        </>
+    )
+}
 
-export default RegistrationForm;
+export default RegistrationForm
