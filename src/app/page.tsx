@@ -1,11 +1,27 @@
+"use client";
+
 import Cards from "@/components/HomePage/Cards";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import tournament from "../data/tournament.json";
+import axios from "axios";
+import { useRouter } from 'next/navigation';
+
 
 export default function Home() {
+  const router = useRouter();
   const tournamentdata = tournament.tournamentdata;
+  const handleLogout = async () => {
+    try {
+      // Call the logout API
+      await axios.post('/api/userlogout');
+      // Redirect to login page after successful logout
+      router.push('/login');
+    } catch (error) {
+      console.error('Logout failed', error);
+    }
+  };
   return (
     <>
       {/* <Link href={"/registration"}>Registration</Link>
@@ -26,6 +42,7 @@ export default function Home() {
             <Link href="/login">
               <Button className="w-full" >Login</Button>
             </Link>
+            <Button onClick={handleLogout}>Logout</Button>
           </div>
           <div>
 
