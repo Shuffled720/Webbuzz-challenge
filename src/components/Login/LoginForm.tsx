@@ -1,17 +1,24 @@
-// app/login/page.tsx
 "use client";
-import React, { useState } from 'react';
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
+import { Label } from "@/components/ui/label"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
 import { useForm, SubmitHandler } from 'react-hook-form';
 import axios from 'axios';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'; // Import useRouter for redirection
+import { useState } from "react";
+
+
+
 
 type LoginFormInputs = {
     email: string;
     password: string;
 };
 
+
 const LoginForm = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<LoginFormInputs>();
+    const { register, handleSubmit } = useForm<LoginFormInputs>();
     const [errorMessage, setErrorMessage] = useState('');
     const router = useRouter();
 
@@ -23,7 +30,7 @@ const LoginForm = () => {
             // Handle successful login
             if (response.status === 200) {
                 // Redirect to dashboard after login
-                router.push('/');
+                router.push('/dashboard');
             }
         } catch (error) {
             console.log(error);
@@ -32,25 +39,32 @@ const LoginForm = () => {
         }
     };
 
-    return (
-        <div>
-            <h1>Login</h1>
-            {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div>
-                    <label>Email</label>
-                    <input type="email" {...register('email', { required: 'Email is required' })} />
-                    {errors.email && <p>{errors.email.message}</p>}
-                </div>
-                <div>
-                    <label>Password</label>
-                    <input type="password" {...register('password', { required: 'Password is required' })} />
-                    {errors.password && <p>{errors.password.message}</p>}
-                </div>
-                <button type="submit">Login</button>
-            </form>
-        </div>
-    );
-};
 
-export default LoginForm;
+    return (
+        <>
+            <form onSubmit={handleSubmit(onSubmit)} className="h-screen flex">
+
+                <Card className="m-auto max-w-sm">
+                    <CardHeader>
+                        <CardTitle className="text-3xl">Login</CardTitle>
+                        {/* <CardDescription>Enter your information to Login To your account</CardDescription> */}
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                        <div className="space-y-2">
+                            <Label htmlFor="email">Email</Label>
+                            <Input id="email" type="email" placeholder="me@example.com" required {...register("email")} />
+                        </div>
+                        <div className="space-y-2">
+                            <Label htmlFor="password">Password</Label>
+                            <Input id="password" type="password" required {...register("password")} />
+                        </div>
+                        <Button className="w-full">Login</Button>
+                    </CardContent>
+                </Card>
+                {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+            </form>
+        </>
+    )
+}
+
+export default LoginForm
