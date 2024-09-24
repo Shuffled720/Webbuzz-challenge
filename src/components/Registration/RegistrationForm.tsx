@@ -46,7 +46,9 @@ const RegistrationForm = () => {
             alert('Registration successful!');
             console.log(response.data);
         } catch (error) {
-            alert('Error occurred while registering!' + error);
+            console.log(error);
+
+            alert('Error occurred while registering!');
         }
         reset();
         router.push('/');

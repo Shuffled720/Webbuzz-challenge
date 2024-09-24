@@ -26,6 +26,8 @@ const LoginForm = () => {
                 router.push('/');
             }
         } catch (error) {
+            console.log(error);
+
             setErrorMessage('Invalid email or password');
         }
     };
