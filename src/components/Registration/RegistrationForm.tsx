@@ -21,8 +21,19 @@ const stepTwoSchema = yup.object().shape({
 type FormData = {
     firstName: string;
     lastName: string;
+    age: number;
     email: string;
-    password: string;
+    phone: string;
+    address: string;
+
+    //professional info
+    format: string;
+    experience: "beginner" | "intermediate" | "expert";
+    role: "batsman" | "bowler" | "allrounder" | "wicketkeeper-batsman";
+    battingStyle: "left-hand" | "right-hand";
+    battingOrder: "opening" | "middle" | "tailender";
+    bowlingStyle: "pace" | "spin";
+    bowlingHand: "left-arm" | "right-arm";
 };
 
 const RegistrationForm = () => {
@@ -39,7 +50,7 @@ const RegistrationForm = () => {
                 alert('Registration successful!');
                 console.log(response.data);
             } catch (error) {
-                alert('Error occurred while registering!');
+                alert('Error occurred while registering!' + error);
             }
         } else {
             setStep(step + 1);
@@ -52,41 +63,41 @@ const RegistrationForm = () => {
     };
 
     return (
-        <div>
+        <div className="form-container">
             <h1>Multi-Step Registration Form</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 {step === 1 && (
                     <div>
-                        <div>
+                        <div className="form-group">
                             <label>First Name</label>
                             <input type="text" {...register('firstName')} />
-                            {errors.firstName && <p>{errors.firstName.message}</p>}
+                            {errors.firstName && <p className="error-message">{errors.firstName.message}</p>}
                         </div>
-                        <div>
+                        <div className="form-group">
                             <label>Last Name</label>
                             <input type="text" {...register('lastName')} />
-                            {errors.lastName && <p>{errors.lastName.message}</p>}
+                            {errors.lastName && <p className="error-message">{errors.lastName.message}</p>}
                         </div>
                     </div>
                 )}
 
                 {step === 2 && (
                     <div>
-                        <div>
+                        <div className="form-group">
                             <label>Email</label>
                             <input type="email" {...register('email')} />
-                            {errors.email && <p>{errors.email.message}</p>}
+                            {errors.email && <p className="error-message">{errors.email.message}</p>}
                         </div>
-                        <div>
+                        <div className="form-group">
                             <label>Password</label>
                             <input type="password" {...register('password')} />
-                            {errors.password && <p>{errors.password.message}</p>}
+                            {errors.password && <p className="error-message">{errors.password.message}</p>}
                         </div>
                     </div>
                 )}
 
-                {step < 2 && <button type="button" onClick={handleNextStep}>Next</button>}
-                {step === 2 && <button type="submit">Submit</button>}
+                {step < 2 && <button type="button" onClick={handleNextStep} className="btn">Next</button>}
+                {step === 2 && <button type="submit" className="btn">Submit</button>}
             </form>
         </div>
     );

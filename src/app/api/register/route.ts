@@ -33,6 +33,6 @@ export async function POST(request: Request) {
     await newUser.save();
     return NextResponse.json({ message: 'User registered successfully!' }, { status: 201 });
   } catch (error) {
-    return NextResponse.json({ error: 'Error saving user' }, { status: 500 });
+    return NextResponse.json({ error: 'Error saving user'+error }, { status: 500 });
   }
 }

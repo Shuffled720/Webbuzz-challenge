@@ -1,5 +1,5 @@
 // models/User.ts
-import mongoose, { Schema, model, models } from 'mongoose';
+import { Schema, model, models } from 'mongoose';
 
 // Define the User schema
 const userSchema = new Schema({
