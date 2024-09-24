@@ -18,20 +18,10 @@ type FormData = {
 
 
 };
-const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const data = new FormData(e.currentTarget)
-    const payload = {
-        name: data.get('full-name'),
-        email: data.get('email'),
-        password: data.get('password'),
-        confirmPassword: data.get('confirm-password')
-    }
 
-}
 
 const RegistrationForm = () => {
-    const { register, handleSubmit, formState, reset } = useForm<FormData>({});
+    const { register, handleSubmit, reset } = useForm<FormData>({});
     const router = useRouter(); // Initialize the useRouter hook
 
 
