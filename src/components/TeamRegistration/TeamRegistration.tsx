@@ -218,6 +218,43 @@ export default function MultiStepForm() {
                 </>
             ),
         },
+        {
+            label: "Step 4: Preview",
+            content: (
+                <>
+                    <h2 className="text-slate-400 text-2xl">Captain Details:</h2>
+                    <p className="text-white text-lg">Name: {formData.captainName}</p>
+                    <p className="text-white text-lg">Age: {formData.captainAge}</p>
+                    <p className="text-white text-lg">Role: {formData.captainRole}</p>
+
+                    <h2 className="text-slate-400 text-2xl mt-5">Team Details:</h2>
+                    <p className="text-white text-lg">Team Name: {formData.teamName}</p>
+                    <p className="text-white text-lg">Team Size: {formData.teamsize}</p>
+
+                    <h2 className="text-slate-400 text-2xl mt-5">Players:</h2>
+                    <table className="w-full">
+                        <thead>
+                            <tr>
+                                <th className="text-slate-400 text-3xl">Sr.No</th>
+                                <th className="text-slate-400 text-3xl">Name</th>
+                                <th className="text-slate-400 text-3xl">Age</th>
+                                <th className="text-slate-400 text-3xl">Role</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {formData.players.map((player, index) => (
+                                <tr key={index}>
+                                    <td className="text-white text-center text-xl">{index + 1}</td>
+                                    <td className="text-white text-center text-xl">{player.playerName}</td>
+                                    <td className="text-white text-center text-xl">{player.playerAge}</td>
+                                    <td className="text-white text-center text-xl">{player.playerRole}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </>
+            )
+        }
     ];
 
     return (

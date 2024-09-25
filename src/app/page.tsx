@@ -16,12 +16,14 @@ export default function Home() {
       </nav>
       <div className='m-10'>
         <h1 className='text-white text-center text-white text-5xl p-5 font-sans'>Welcome to Webbuzz</h1>
-        <p className='text-white text-center'>Lorem ipsum dolo Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cumque sed ipsa corrupti minima eius dolores distinctio! Pariatur voluptatem eligendi nam fugiat, nemo ipsum fuga nostrum, vitae magnam tenetur saepe amet.r sit amet consectetur adipisicing elit. Rem dolores molestias, recusandae veritatis corrupti fugiat. Illum fugiat ut veritatis, odit perferendis architecto impedit similique magni quia aliquam. Sed, voluptatibus necessitatibus.</p>
+        <p className='text-white text-center'>WebBuzz is a premier sports organization specializing in hosting and organizing exhilarating cricket tournaments across various formats.Our tournaments cater to all levels of cricketing talent, offering formats like Test, ODI, T20, and T10, providing both seasoned players and newcomers a chance to engage in the sport they love.At WebBuzz, we believe that cricket is more than just a game—it’s a community. We strive to promote sportsmanship, teamwork, and the spirit of competition through well-organized, high-energy tournaments. Whether you&apos;re a player or a fan, WebBuzz provides an inclusive platform for everyone to enjoy the essence of cricket.
+
+          Join us and be part of the excitement as we continue to create unforgettable cricketing moments, one match at a time!</p>
       </div>
       {token ?
         <>
           <Button asChild>
-            <Link href="/dashboard">Continue</Link>
+            <Link href="/dashboard">Go to Tournaments</Link>
           </Button>
         </>
         :
