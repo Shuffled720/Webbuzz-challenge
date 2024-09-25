@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link';
 
 interface Props {
     data: { title: string, image: string, link: string, fee: number }
@@ -10,11 +11,11 @@ const Cards = (props: Props) => {
     return (
         <>
 
-            <a href={data.link} target="_blank">
+            <Link href={data.link} >
                 <Image className='object-contain h-64 w-64' width={1000} height={1000} src={data.image} alt="preview" />
                 <p>{data.title}</p>
                 <p>Fee: {data.fee}</p>
-            </a>
+            </Link>
 
         </>
     )

@@ -3,7 +3,7 @@
 import Cards from "@/components/HomePage/Cards";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
 import tournament from "@/data/tournament.json";
 import axios from "axios";
 import { useRouter } from 'next/navigation';
@@ -32,12 +32,12 @@ export default function Home() {
                         <Image width={100} height={100} src="/Images/logo.png" alt="PULSE" />
                     </div>
                     <div className="grid gird-cols-2  flex items-center">
-                        <Link href="/registration">
+                        {/* <Link href="/registration">
                             <Button >Registration</Button>
                         </Link>
                         <Link href="/login">
                             <Button className="w-full" >Login</Button>
-                        </Link>
+                        </Link> */}
                         <Button onClick={handleLogout}>Logout</Button>
                     </div>
                     <div>
