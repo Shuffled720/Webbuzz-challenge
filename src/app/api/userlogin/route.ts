@@ -1,5 +1,5 @@
 // app/api/login/route.ts
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcrypt';
 // import jwt from 'jsonwebtoken';
 import jwt from "jsonwebtoken";
@@ -10,7 +10,7 @@ import User from '@/models/User';
 const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret';
 
 // Login API logic
-export async function POST(request: Request) {
+export async function POST(request: NextRequest, response: NextResponse) {
   const { email, password } = await request.json();
 
   // Connect to the database
@@ -32,8 +32,11 @@ export async function POST(request: Request) {
   const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, { expiresIn: '1h' });
 
   // Set the token as an HTTP-only cookie
-  const response = NextResponse.json({ message: 'Login successful' });
-  response.cookies.set('token', token, { httpOnly: true, maxAge: 3600, path: '/' });
+  // response = NextResponse.json({ message: 'Login successful' });
+  // response.cookies.set('token', token, { httpOnly: true, maxAge: 3600, path: '/' });
 
+  // return response;
+  response=NextResponse.json({ message: 'Login successful',token, user });
   return response;
+  
 }

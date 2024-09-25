@@ -1,3 +1,5 @@
+import TeamRegistration from "@/components/TeamRegistration/TeamRegistration";
+
 const page = ({ params,
     searchParams, }: {
         params: { slug: string };
@@ -9,8 +11,7 @@ const page = ({ params,
         <>
             <div className="text-white text-5xl">
 
-                <h1>Registration Page</h1>
-                <p>Registration page for <span className="text-green-500">{searchParams?.tournament}</span></p>
+                <TeamRegistration />
             </div>
         </>
     )

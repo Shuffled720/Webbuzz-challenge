@@ -26,7 +26,7 @@ const LoginForm = () => {
         try {
             // Post form data to the login API
             const response = await axios.post('/api/userlogin', data);
-
+            document.cookie = `token=${response.data.token}; path=/`;
             // Handle successful login
             if (response.status === 200) {
                 // Redirect to dashboard after login
