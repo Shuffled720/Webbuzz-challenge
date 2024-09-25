@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Webbuzz Cricket Website Challenge
 
-## Getting Started
+Welcome to the Cricket-Themed Website project for Webbuzz, a sports organization dedicated to conducting cricket tournaments in various formats. This project showcases a dynamic and engaging website built using Next.js, TypeScript, Tailwind CSS, and ShedCN UI.
 
-First, run the development server:
+## Technologies Used
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- _Next.js_: For server-side rendering and static site generation.
+- _TypeScript_: For type-safe JavaScript.
+- _Tailwind CSS_: For utility-first styling and responsive design.
+- _ShedCN UI_: For additional UI components and styling.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. _Homepage_: An engaging homepage with cricket-themed visuals and interactive elements.
+2. _Registration Form_: A multi-stage form for user registration, with data sent to a demo POST method.
+3. _Responsive Design_: The site is designed to be fully responsive and accessible on various devices.
+4. _Animations and Transitions_: Smooth transitions and animations to enhance user experience.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Installation
 
-## Learn More
+To set up the project locally, follow these steps:
 
-To learn more about Next.js, take a look at the following resources:
+1. Clone the repository:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   bash
+   git clone https://github.com/Shuffled720/Webbuzz-challenge.git
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Navigate to the project directory:
 
-## Deploy on Vercel
+   bash
+   cd Webbuzz-challenge
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Install dependencies:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   bash
+   npm install
+
+4. Run the development server:
+
+   bash
+   npm run dev
+
+5. Open your browser and visit http://localhost:3000 to view the website.
+
+## Deployment
+
+The website is hosted on [Vercel](https://vercel.com) (or GitHub Pages, Netlify). You can view the live site here:
+
+- [Live Demo](https://webbuzz-challenge.vercel.app/)
+
+## Usage
+
+1. Navigate to the homepage to explore the cricket-themed elements and interactive features.
+2. Use the multi-stage registration form to sign up. The form data is sent to a demo POST method for testing purposes.
+
+## Contributing
+
+Feel free to fork the repository and submit pull requests with improvements or bug fixes. Ensure that your contributions align with the project's theme and functionality.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Acknowledgements
+
+- [Next.js](https://nextjs.org)
+- [TypeScript](https://www.typescriptlang.org)
+- [Tailwind CSS](https://tailwindcss.com)
+- [ShedCN UI](https://shedcn.com/ui)
+
+---
+
+Happy coding and good luck with the competition!
