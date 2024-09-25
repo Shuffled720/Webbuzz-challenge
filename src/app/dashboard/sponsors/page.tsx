@@ -90,6 +90,23 @@ export default function Component() {
                     </div>
                 </CardContent>
             </Card>
+            <Card>
+                <CardHeader>
+                    <Image
+                        src="/Images/Sponsor/Sponser6.jpg"
+                        alt="Image 3"
+                        className="aspect-square object-cover border border-gray-200 w-full rounded-lg overflow-hidden dark:border-gray-800"
+                        width="300"
+                        height="300"
+                    />
+                </CardHeader>
+                <CardContent>
+                    <h2 className="text-lg font-bold">Red Bull (Beverages Sponsor):</h2>
+                    <p className="text-gray-600">Red Bull, the world&apso;s leading energy drink brand, gives wings to both players and fans during the WebBuzz tournament. Stay energized and on top of your game with Red Bull.</p>
+                    <div className="flex items-center space-x-2 mt-2">
+                    </div>
+                </CardContent>
+            </Card>
         </main>
     )
 }

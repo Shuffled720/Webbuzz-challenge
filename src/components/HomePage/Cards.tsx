@@ -20,7 +20,7 @@ const Cards = (props: Props) => {
             {/* <Link href={{ pathname: '/dashboard/registration', query: { tournament: data.link } }} > */}
             <Image className='object-contain h-64 w-64' width={1000} height={1000} src={data.image} alt="preview" />
             <p className='text-white'>{data.title}</p>
-            <p className='text-white'>Fee: {data.fee}</p>
+            <p className='text-white'>Fee: {data.fee}₹</p>
             <Button asChild><Link href={{ pathname: '/dashboard/registration', query: { tournament: data.link } }}>Register</Link></Button>
             {/* </Link> */}
 
