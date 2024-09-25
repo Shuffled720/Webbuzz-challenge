@@ -49,7 +49,7 @@ export default function MultiStepForm() {
     };
 
     // Function to update player data
-    const updatePlayerData = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
+    const updatePlayerData = (index: number, e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const updatedPlayers = [...formData.players];
         updatedPlayers[index] = {
             ...updatedPlayers[index],
@@ -136,13 +136,19 @@ export default function MultiStepForm() {
                     </label>
                     <label className="block text-white text-xl">
                         Captain&apos;s Role:
-                        <input
+                        {/* <input
                             type="text"
                             name="captainRole"
                             value={formData.captainRole}
                             onChange={updateFormData}
                             className="block w-full p-2 mt-2 mb-4 text-black"
-                        />
+                        /> */}
+                        <select name="captainRole" className="block w-full p-2 mt-2 mb-4 text-black" >
+                            <option value={formData.captainRole}>--Please choose an option--</option>
+                            <option value="bat">Batting</option>
+                            <option value="bowl">Bowling</option>
+                            <option value="all">All Rounder</option>
+                        </select>
                     </label>
                 </>
             ),
@@ -204,13 +210,19 @@ export default function MultiStepForm() {
                                 </label>
                                 <label className="block text-white text-xl">
                                     Player Role:
-                                    <input
+                                    {/* <input
                                         type="text"
                                         name="playerRole"
                                         value={player.playerRole}
                                         onChange={(e) => updatePlayerData(index, e)}
                                         className="block w-full p-2 mt-2 mb-4 text-black"
-                                    />
+                                    /> */}
+                                    <select name="playerRole" className="block w-full p-2 mt-2 mb-4 text-black" onChange={(e) => updatePlayerData(index, e)}>
+                                        <option value={player.playerRole}>--Please choose an option--</option>
+                                        <option value="bat">Batting</option>
+                                        <option value="bowl">Bowling</option>
+                                        <option value="all">All Rounder</option>
+                                    </select>
                                 </label>
                             </div>
                         </div>
@@ -225,7 +237,8 @@ export default function MultiStepForm() {
                     <h2 className="text-slate-400 text-2xl">Captain Details:</h2>
                     <p className="text-white text-lg">Name: {formData.captainName}</p>
                     <p className="text-white text-lg">Age: {formData.captainAge}</p>
-                    <p className="text-white text-lg">Role: {formData.captainRole}</p>
+                    {/* <p className="text-white text-lg">Role: {formData.captainRole}</p> */}
+                    <p className="text-white text-lg">Role: {formData.captainRole === 'bat' ? 'Batting' : formData.captainRole === 'bowl' ? 'Bowling' : 'All Rounder'}</p>
 
                     <h2 className="text-slate-400 text-2xl mt-5">Team Details:</h2>
                     <p className="text-white text-lg">Team Name: {formData.teamName}</p>
@@ -247,7 +260,8 @@ export default function MultiStepForm() {
                                     <td className="text-white text-center text-xl">{index + 1}</td>
                                     <td className="text-white text-center text-xl">{player.playerName}</td>
                                     <td className="text-white text-center text-xl">{player.playerAge}</td>
-                                    <td className="text-white text-center text-xl">{player.playerRole}</td>
+                                    {/* <td className="text-white text-center text-xl">{player.playerRole}</td> */}
+                                    <td className="text-white text-center text-xl">{player.playerRole === 'bat' ? 'Batting' : player.playerRole === 'bowl' ? 'Bowling' : 'All Rounder'}</td>
                                 </tr>
                             ))}
                         </tbody>
