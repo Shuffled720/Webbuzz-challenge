@@ -11,7 +11,6 @@ import { motion } from "framer-motion"; // Import motion from framer-motion
 export default function Home() {
     const router = useRouter();
     const tournamentdata = tournament.tournamentdata;
-
     const handleLogout = async () => {
         try {
             // Call the logout API
