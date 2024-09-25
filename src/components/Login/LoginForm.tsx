@@ -7,6 +7,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import axios from 'axios';
 import { useRouter } from 'next/navigation'; // Import useRouter for redirection
 import { useState } from "react";
+import Link from "next/link";
 
 
 
@@ -60,6 +61,8 @@ const LoginForm = () => {
                         </div>
                         <Button className="w-full">Login</Button>
                     </CardContent>
+                    <h1 className="text-center text-gray-500 text-sm p-2">Don&apos;t have an account? <Link href="/register" className="text-blue-500">Sign up</Link></h1>
+                    <h1 className="text-center text-gray-500 text-sm p-2"> <Link href="/" className="text-blue-500">Home</Link></h1>
                 </Card>
                 {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
             </form>
