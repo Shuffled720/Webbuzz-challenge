@@ -9,6 +9,13 @@ const config: Config = {
   ],
   theme: {
   	extend: {
+		fontFamily: {
+			oswald: ['Oswald', 'sans-serif'],
+			roboto: ['Roboto Condensed', 'sans-serif'],
+			bebas: ['Bebas Neue', 'sans-serif'],
+			anton: ['Anton', 'sans-serif'],
+			poppins: ['Poppins', 'sans-serif'],
+		  },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
