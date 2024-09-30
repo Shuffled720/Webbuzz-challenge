@@ -22,22 +22,22 @@ To set up the project locally, follow these steps:
 
 1. Clone the repository:
 
-   bash
+   
    git clone https://github.com/Shuffled720/Webbuzz-challenge.git
 
 2. Navigate to the project directory:
 
-   bash
+   
    cd Webbuzz-challenge
 
 3. Install dependencies:
 
-   bash
+   
    npm install
 
 4. Run the development server:
 
-   bash
+   
    npm run dev
 
 5. Open your browser and visit http://localhost:3000 to view the website.
